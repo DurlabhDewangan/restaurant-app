@@ -1,0 +1,142 @@
+
+        /* Menu card styling to match home page */
+        .menu-card {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .menu-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+        }
+        
+        .menu-card-img {
+            height: 200px;
+            object-fit: cover;
+            width: 100%;
+           
+        }
+        
+        .menu-card:hover {
+            transform: scale(1.05);
+        }
+        
+        .menu-card-body {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .menu-card-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #2C3E50;
+        }
+        
+        .menu-card-price {
+            font-weight: 700;
+            color: #d3220f;
+            margin-bottom: 0.75rem;
+        }
+        
+        .menu-card-desc {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            flex-grow: 1;
+        }
+        
+        .menu-card-category {
+            display: inline-block;
+            background: #ECF0F1;
+            color: #2C3E50;
+            padding: 0.25rem 0.75rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        /* Grid layout */
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+        
+        @media (max-width: 1024px) {
+            .menu-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Search bar */
+        .search-container {
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            position: relative;
+        }
+        
+        #menu-search {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            border-radius: 50px;
+            border: 1px solid #ddd;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        #menu-search:focus {
+            outline: none;
+            border-color: #E74C3C;
+            box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.2);
+        }
+        
+        .search-container button {
+            position: absolute;
+            right: 1.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: #666;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        
+        .search-container button:hover {
+            color: #E74C3C;
+        }
+            
+        /* No results */
+        #no-results {
+            text-align: center;
+            padding: 4rem 0;
+        }
+        
+        #no-results h3 {
+            font-size: 2rem;
+            color: #2C3E50;
+            margin-bottom: 1rem;
+        }
+        
+        #no-results p {
+            color: #666;
+            font-size: 1.1rem;
+        }
+        

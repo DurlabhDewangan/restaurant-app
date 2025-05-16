@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contact YourRestaurant - Modern Indian Cuisine. Book reservations, inquire about private events, or get in touch with our team.">
+    <title>Contact Us | YourRestaurant | Modern Indian Cuisine</title>
+    <link rel="stylesheet" href="./output.css">
+    <link rel="stylesheet" href="css/common.css">
+
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Prata&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- AOS (Animate On Scroll) -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/index.css">
+    
+    <!-- Leaflet CSS for OpenStreetMap -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <style>
+        #restaurant-map {
+            width: 100%;
+            height: 400px;
+            border-radius: 8px;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 40px;
+            left: 40px;
+            background-color: #25d366;
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 2px 2px 3px #999;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .whatsapp-float:hover {
+            background-color: #128C7E;
+            transform: scale(1.1);
+        }
+        
+        .whatsapp-text {
+            position: fixed;
+            left: 100px;
+            bottom: 50px;
+            background: #25d366;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            box-shadow: 2px 2px 3px #999;
+            z-index: 99;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+        
+        .whatsapp-float:hover + .whatsapp-text {
+            opacity: 1;
+        }
+        
+        /* Ensure all components are visible */
+        .hidden {
+            display: none;
+        }
+        
+        .visible {
+            display: block;
+        }
+        
+        /* Fix for map tiles loading */
+        .leaflet-container {
+            background: #f8f9fa;
+        }
+    </style>
+</head>
+<body class="font-sans bg-gray-50">
+
+
+      <!-- Navigation -->
+    <nav class="fixed w-full bg-white shadow-sm z-50 transition-all duration-500" id="navbar">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-3xl font-bold transform hover:scale-105 transition-transform">
+                <span class="text-secondary">Your<span class="text-primary">Restaurant</span></span>
+            </a>
+            
+            <div class="hidden md:flex space-x-8 items-center">
+                <a href="index.html" class="nav-link underline-animation">Home</a>
+                <a href="about.html" class="nav-link underline-animation active">About</a>
+                <a href="menu.html" class="nav-link underline-animation">Menu</a>
+                <a href="gallery.html" class="nav-link underline-animation">Gallery</a>
+                <a href="contact.html" class="nav-link underline-animation">Contact</a>
+                <a href="reservation.html" class="btn btn-primary ml-4 animate__animated animate__pulse animate__infinite animate__slower">Reservations</a>
+            </div>
+            
+            <button class="md:hidden focus:outline-none" id="hamburger-btn">
+                <div class="hamburger">
+                    <span class="hamburger-line block w-6 h-0.5 bg-secondary mb-1.5"></span>
+                    <span class="hamburger-line block w-6 h-0.5 bg-secondary mb-1.5"></span>
+                    <span class="hamburger-line block w-6 h-0.5 bg-secondary"></span>
+                </div>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu fixed inset-0 bg-white z-40 pt-20 px-6 md:hidden hidden" id="mobile-menu">
+        <div class="flex flex-col space-y-6 text-xl">
+            <a href="index.html" class="nav-link py-2 underline-animation">Home</a>
+            <a href="about.html" class="nav-link py-2 underline-animation active">About</a>
+            <a href="menu.html" class="nav-link py-2 underline-animation">Menu</a>
+            <a href="gallery.html" class="nav-link py-2 underline-animation">Gallery</a>
+            <a href="contact.html" class="nav-link py-2 underline-animation">Contact</a>
+            <a href="reservation.html" class="btn btn-primary px-6 py-3 rounded-full w-full text-center mt-4">Reservations</a>
+        </div>
+    </div>
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/919876543210" class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+    <div class="whatsapp-text">Chat with us</div>
+
+  
+
+    <!-- Contact Hero Section -->
+    <section class="pt-32 pb-20 px-6">
+        <div class="container mx-auto text-center" data-aos="fade-up">
+            <h1 class="text-4xl md:text-5xl font-bold mb-6">Contact <span class="text-primary">Us</span></h1>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                We'd love to hear from you. Reach out for reservations, events, or any inquiries.
+            </p>
+        </div>
+    </section>
+
+    <!-- Contact Information -->
+    <section class="bg-white">
+        <div class="container mx-auto px-6 max-w-6xl">
+            <div class="grid md:grid-cols-3 gap-8 mb-16">
+                <!-- Location -->
+                <div class="bg-gray-50 p-8 rounded-lg shadow-sm text-center" data-aos="fade-up">
+                    <div class="bg-primary/10 w-16 h-16 mx-auto rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-map-marker-alt text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Location</h3>
+                    <p class="text-gray-600 mb-4">123 Your Street<br>Kawardha, Chhattisgarh 491995</p>
+                    <a href="#map" class="text-primary font-medium hover:underline">View on map</a>
+                </div>
+                
+                <!-- Contact -->
+                <div class="bg-gray-50 p-8 rounded-lg shadow-sm text-center" data-aos="fade-up" data-aos-delay="100">
+                    <div class="bg-primary/10 w-16 h-16 mx-auto rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-phone-alt text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Contact</h3>
+                    <p class="text-gray-600 mb-2">+91 98765 43210</p>
+                    <p class="text-gray-600 mb-4">contact@yourrestaurant.com</p>
+                    <a href="tel:+919876543210" class="text-primary font-medium hover:underline">Call us</a>
+                </div>
+                
+                <!-- Hours -->
+                <div class="bg-gray-50 p-8 rounded-lg shadow-sm text-center" data-aos="fade-up" data-aos-delay="200">
+                    <div class="bg-primary/10 w-16 h-16 mx-auto rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-clock text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Opening Hours</h3>
+                    <p class="text-gray-600 mb-2">Monday - Thursday: 11AM - 10:30PM</p>
+                    <p class="text-gray-600 mb-2">Friday - Saturday: 11AM - 11:30PM</p>
+                    <p class="text-gray-600">Sunday: 11AM - 10PM</p>
+                </div>
+            </div>
+            
+            <!-- Map and Contact Form -->
+            <div class="grid md:grid-cols-2 gap-12 items-start">
+                <!-- Map -->
+                <div class="rounded-lg overflow-hidden shadow-sm" data-aos="fade-right">
+                    <div id="restaurant-map"></div>
+                </div>
+               
+                <!-- Contact Form -->
+                <div class="bg-gray-50 p-8 rounded-lg shadow-sm" data-aos="fade-left" data-aos-delay="200">
+                    <h2 class="text-3xl font-bold mb-6">Send Us a Message</h2>
+                    <form id="contact-form">
+                        <div class="mb-6">
+                            <label for="name" class="block text-gray-700 font-medium mb-2">Full Name</label>
+                            <input type="text" id="name" name="name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent" required>
+                        </div>
+                        <div class="mb-6">
+                            <label for="email" class="block text-gray-700 font-medium mb-2">Email Address</label>
+                            <input type="email" id="email" name="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent" required>
+                        </div>
+                        <div class="mb-6">
+                            <label for="phone" class="block text-gray-700 font-medium mb-2">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                        </div>
+                        <div class="mb-6">
+                            <label for="subject" class="block text-gray-700 font-medium mb-2">Subject</label>
+                            <select id="subject" name="subject" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent" required>
+                                <option value="">Select a subject</option>
+                                <option value="reservation">Reservation Inquiry</option>
+                                <option value="private-dining">Private Dining/Events</option>
+                                <option value="feedback">Feedback/Suggestions</option>
+                                <option value="careers">Careers/Employment</option>
+                                <option value="other">Other Inquiry</option>
+                            </select>
+                        </div>
+                        <div class="mb-6">
+                            <label for="message" class="block text-gray-700 font-medium mb-2">Your Message</label>
+                            <textarea id="message" name="message" rows="5" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-full py-3">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Private Events Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6 max-w-6xl">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-4xl font-bold mb-4">
+                    Private <span class="text-primary">Dining & Events</span>
+                </h2>
+                <p class="text-lg max-w-2xl mx-auto">
+                    Host your special occasions in our elegant private dining spaces
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div data-aos="fade-right">
+                    <img src="https://images.unsplash.com/photo-1555244162-803834f70033?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                         alt="Private dining room" 
+                         class="rounded-lg shadow-xl w-full h-auto"
+                         loading="lazy">
+                </div>
+                <div data-aos="fade-left" data-aos-delay="200">
+                    <h3 class="text-2xl font-bold mb-4">Host Your Special Event</h3>
+                    <p class="text-gray-600 mb-6">
+                        Our private dining room accommodates up to 30 guests for weddings, corporate events, and family gatherings. We offer customized menus and dedicated service to make your event memorable.
+                    </p>
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-primary mt-1 mr-3"></i>
+                            <span>Customized menus for your event</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-primary mt-1 mr-3"></i>
+                            <span>Dedicated event coordinator</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-primary mt-1 mr-3"></i>
+                            <span>AV equipment available</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-primary mt-1 mr-3"></i>
+                            <span>Special decor arrangements</span>
+                        </li>
+                    </ul>
+                    <a href="#contact-form" class="btn btn-primary">
+                        Inquire About Private Events
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-6 max-w-4xl">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-4xl font-bold mb-4">
+                    Frequently Asked <span class="text-primary">Questions</span>
+                </h2>
+                <p class="text-lg">
+                    Find answers to common inquiries about dining with us
+                </p>
+            </div>
+            
+            <div class="space-y-6">
+                <!-- FAQ Item 1 -->
+                <div class="border border-gray-200 rounded-lg overflow-hidden" data-aos="fade-up">
+                    <button class="faq-question w-full text-left p-6 flex justify-between items-center focus:outline-none">
+                        <h3 class="text-lg font-medium">Do you take walk-ins or only reservations?</h3>
+                        <i class="fas fa-chevron-down transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-answer px-6 pb-6 hidden">
+                        <p class="text-gray-600">
+                            We welcome both walk-ins and reservations. However, we highly recommend making a reservation, especially on weekends and holidays, as we tend to get quite busy. You can book online through our website or by calling us directly.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 2 -->
+                <div class="border border-gray-200 rounded-lg overflow-hidden" data-aos="fade-up" data-aos-delay="100">
+                    <button class="faq-question w-full text-left p-6 flex justify-between items-center focus:outline-none">
+                        <h3 class="text-lg font-medium">Do you accommodate dietary restrictions?</h3>
+                        <i class="fas fa-chevron-down transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-answer px-6 pb-6 hidden">
+                        <p class="text-gray-600">
+                            Yes, we're happy to accommodate dietary restrictions including vegetarian, vegan, gluten-free, and allergies. Please inform your server about any dietary needs when you arrive, or note them in your reservation. Our chefs will prepare dishes that meet your requirements without compromising on flavor.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 3 -->
+               <div class="border border-gray-200 rounded-lg overflow-hidden" data-aos="fade-up" data-aos-delay="100">
+                    <button class="faq-question w-full text-left p-6 flex justify-between items-center focus:outline-none">
+                        <h3 class="text-lg font-medium">What is your cancellation policy?</h3>
+                        <i class="fas fa-chevron-down transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-answer px-6 pb-6 hidden">
+                        <p class="text-gray-600">
+                            For regular reservations, we request at least 24 hours notice for cancellations. For large groups (6+ people) and private events, we require 48 hours notice. Late cancellations or no-shows may be subject to a cancellation fee. During peak seasons or special events, different policies may apply which will be communicated at the time of booking.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 4 -->
+                <div class="border border-gray-200 rounded-lg overflow-hidden" data-aos="fade-up" data-aos-delay="300">
+                    <button class="faq-question w-full text-left p-6 flex justify-between items-center focus:outline-none">
+                        <h3 class="text-lg font-medium">Is there parking available?</h3>
+                        <i class="fas fa-chevron-down transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-answer px-6 pb-6 hidden">
+                        <p class="text-gray-600">
+                            We offer valet parking service from 5PM to midnight daily. There is also street parking available nearby, and a public parking garage two blocks away. For private events, we can arrange dedicated parking for your guests - please inquire when booking your event.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   <!-- Footer -->
+   <footer class="bg-dark text-white py-12">
+    <div class="container mx-auto px-6">
+        <div class="grid md:grid-cols-4 gap-8">
+            <!-- Column 1: Logo and Social -->
+            <div data-aos="fade-up" data-aos-delay="100">
+                <a href="index.html" class="footer-logo">
+                    <span class="text-white">Your<span class="text-red-500">Restaurant</span></span>
+                </a>
+                <p class="mb-6 text-gray-300">
+                    Modern Indian cuisine blending traditional flavors with contemporary presentation.
+                </p>
+                <div class="footer-social space-x-4">
+                    <a href="#" aria-label="Facebook" class="text-gray-300 hover:text-white transition-colors">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" aria-label="Instagram" class="text-gray-300 hover:text-white transition-colors">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" aria-label="Twitter" class="text-gray-300 hover:text-white transition-colors">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Column 2: Quick Links -->
+            <div data-aos="fade-up" data-aos-delay="100">
+                <h4 class="text-lg font-bold mb-4 text-white">Quick Links</h4>
+                <ul class="space-y-2">
+                    <li><a href="index.html" class="text-gray-300 hover:text-red-500 transition-colors">Home</a></li>
+                    <li><a href="about.html" class="text-gray-300 hover:text-red-500 transition-colors">About Us</a></li>
+                    <li><a href="menu.html" class="text-gray-300 hover:text-red-500 transition-colors">Menu</a></li>
+                    <li><a href="gallery.html" class="text-gray-300 hover:text-red-500 transition-colors">Gallery</a></li>
+                    <li><a href="contact.html" class="text-gray-300 hover:text-red-500 transition-colors">Contact</a></li>
+                </ul>
+            </div>
+
+            <!-- Column 3: Legal -->
+            <div data-aos="fade-up" data-aos-delay="200">
+                <h4 class="text-lg font-bold mb-4 text-white">Legal</h4>
+                <ul class="space-y-2">
+                    <li><a href="legal.html" class="text-gray-300 hover:text-red-500 transition-colors">Privacy Policy</a></li>
+                    <li><a href="legal.html" class="text-gray-300 hover:text-red-500 transition-colors">Terms of Service</a></li>
+                    <li><a href="legal.html" class="text-gray-300 hover:text-red-500 transition-colors">Cookie Policy</a></li>
+                </ul>
+            </div>
+
+            <!-- Column 4: Newsletter -->
+            <div data-aos="fade-up" data-aos-delay="300">
+                <h4 class="text-lg font-bold mb-4 text-white">Newsletter</h4>
+                <p class="mb-4 text-gray-300">
+                    Subscribe to our newsletter for seasonal menus, special events, and exclusive offers.
+                </p>
+                <form class="flex">
+                    <input 
+                        type="email" 
+                        placeholder="Your email" 
+                        class="px-4 py-2 bg-gray-800 text-white border border-gray-700 rounded-l-lg w-full focus:outline-none focus:ring-2 focus:ring-red-400" 
+                        required
+                    >
+                    <button 
+                        type="submit" 
+                        class="bg-red-500 text-white px-4 py-2 rounded-r-lg hover:bg-red-600 transition-colors focus:outline-none focus:ring-2 focus:ring-red-300" 
+                        aria-label="Subscribe"
+                    >
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+        <div class="border-t border-gray-800 mt-20 pt-8 text-center text-white">
+            <p>&copy; 2025 YourRestaurant. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<!-- Back to top -->
+<a href="#" class="back-to-top fixed bottom-8 right-8 bg-red-500 text-white p-4 rounded-full shadow-lg hover:bg-red-600 transition-colors z-50" id="backToTop" aria-label="Back to top">
+    <i class="fas fa-arrow-up"></i>
+</a>
+
+    <!-- AOS (Animate On Scroll) -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <!-- Leaflet JS for OpenStreetMap -->
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+
+      <script src="javaScript/common.js"></script>
+    
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true
+        });
+
+        // Mobile menu toggle
+        const hamburgerBtn = document.getElementById('hamburger-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const hamburger = document.querySelector('.hamburger');
+        
+        if (hamburgerBtn && mobileMenu) {
+            hamburgerBtn.addEventListener('click', () => {
+                hamburger.classList.toggle('active');
+                mobileMenu.classList.toggle('hidden');
+                document.body.classList.toggle('overflow-hidden');
+            });
+        }
+
+        // Close mobile menu when clicking links
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                mobileMenu.classList.add('hidden');
+                document.body.classList.remove('overflow-hidden');
+            });
+        });
+
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        if (navbar) {
+            window.addEventListener('scroll', function() {
+                if (window.pageYOffset > 100) {
+                    navbar.classList.add('shadow-lg');
+                } else {
+                    navbar.classList.remove('shadow-lg');
+                }
+            });
+        }
+
+        // Back to top button
+        const backToTopBtn = document.getElementById('backToTop');
+        if (backToTopBtn) {
+            window.addEventListener('scroll', () => {
+                if (window.pageYOffset > 300) {
+                    backToTopBtn.classList.add('visible');
+                } else {
+                    backToTopBtn.classList.remove('visible');
+                }
+            });
+
+            backToTopBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        }
+
+        // FAQ Accordion
+        document.querySelectorAll('.faq-question').forEach(button => {
+            button.addEventListener('click', () => {
+                const answer = button.nextElementSibling;
+                const icon = button.querySelector('i');
+                
+                // Toggle answer visibility
+                answer.classList.toggle('hidden');
+                
+                // Rotate icon
+                icon.classList.toggle('rotate-180');
+                
+                // Close other open answers
+                document.querySelectorAll('.faq-answer').forEach(item => {
+                    if (item !== answer && !item.classList.contains('hidden')) {
+                        item.classList.add('hidden');
+                        item.previousElementSibling.querySelector('i').classList.remove('rotate-180');
+                    }
+                });
+            });
+        });
+
+        // Contact form submission
+        const contactForm = document.getElementById('contact-form');
+        if (contactForm) {
+            contactForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                alert('Thank you for your message! We will get back to you soon.');
+                contactForm.reset();
+            });
+        }
+
+        // Initialize the map when the page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            initMap();
+            
+            // WhatsApp button click handler
+            const whatsappBtn = document.querySelector('.whatsapp-float');
+            if (whatsappBtn) {
+                whatsappBtn.addEventListener('click', function(e) {
+                    console.log('WhatsApp button clicked');
+                    // You can add analytics tracking here
+                });
+            }
+        });
+
+        // Initialize OpenStreetMap
+        function initMap() {
+            // Coordinates for Kawardha, Chhattisgarh
+            const kawardha = [22.0086, 81.2539];
+            
+            // Create map centered at Kawardha
+            const map = L.map('restaurant-map').setView(kawardha, 15);
+            
+            // Add OpenStreetMap tiles
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+                maxZoom: 18,
+                subdomains: ['a', 'b', 'c']
+            }).addTo(map);
+            
+            // Custom icon
+            const restaurantIcon = L.icon({
+                iconUrl: 'https://cdn.jsdelivr.net/gh/pointhi/leaflet-color-markers@master/img/marker-icon-red.png',
+                iconSize: [25, 41],
+                iconAnchor: [12, 41],
+                popupAnchor: [1, -34],
+                shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png',
+                shadowSize: [41, 41]
+            });
+            
+            // Add marker
+            L.marker(kawardha, {
+                icon: restaurantIcon
+            }).addTo(map)
+            .bindPopup('YourRestaurant<br>123 Your Street, Kawardha')
+            .openPopup();
+            
+            // Fix map display issues
+            setTimeout(() => {
+                map.invalidateSize();
+            }, 200);
+        }
+
+        // Additional resize handler for the map
+        window.addEventListener('resize', function() {
+            if (typeof map !== 'undefined') {
+                setTimeout(() => map.invalidateSize(), 100);
+            }
+        });
+    </script>
+</body>
+</html>

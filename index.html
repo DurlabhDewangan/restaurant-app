@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="YourRestaurant - Contemporary Indian dining experience blending traditional flavors with modern presentation">
+    <title>YourRestaurant | Modern Indian Cuisine</title>
+
+    <!-- my css -->
+    <link rel="stylesheet" href="./output.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/index.css">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Prata&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    
+    <!-- AOS (Animate On Scroll) -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+   
+</head>
+<body>
+   <!-- Navigation -->
+   <nav class="fixed w-full bg-white shadow-sm z-50 transition-all duration-500" id="navbar">
+    <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+        <a href="#" class="text-3xl font-bold transform hover:scale-105 transition-transform ">
+            <span>YourRestaurant</span>
+        </a>
+        
+        <div class="hidden md:flex space-x-8 items-center">
+            <a href="#home" class="nav-link underline-animation">Home</a>
+            <a href="about.html" class="nav-link underline-animation">About</a>
+            <a href="menu.html" class="nav-link underline-animation">Menu</a>
+            <a href="gallery.html" class="nav-link underline-animation">Gallery</a>
+            <a href="contact.html" class="nav-link underline-animation">Contact</a>
+            <a href="reservation.html" class="btn btn-primary ml-4 animate__animated animate__pulse animate__infinite animate__slower">Reservations</a>
+        </div>
+        
+        <button class="md:hidden focus:outline-none" id="hamburger-btn">
+            <div class="hamburger">
+                <span class="hamburger-line block w-6 h-0.5 bg-secondary mb-1.5"></span>
+                <span class="hamburger-line block w-6 h-0.5 bg-secondary mb-1.5"></span>
+                <span class="hamburger-line block w-6 h-0.5 bg-secondary"></span>
+            </div>
+        </button>
+    </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu fixed inset-0 bg-white z-40 pt-20 px-6 md:hidden" id="mobile-menu">
+    <div class="flex flex-col space-y-6 text-xl">
+        <a href="index.html" class="nav-link py-2 underline-animation">Home</a>
+        <a href="about.html" class="nav-link py-2 underline-animation">About</a>
+        <a href="menu.html" class="nav-link py-2 underline-animation">Menu</a>
+        <a href="gallery.html" class="nav-link py-2 underline-animation">Gallery</a>
+        <a href="contact.html" class="nav-link py-2 underline-animation">Contact</a>
+        <a href="reservation.html" class="btn btn-primary px-6 py-3 rounded-full w-full text-center mt-4">Reservations</a>
+    </div>
+</div>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center justify-center relative overflow-hidden pt-16">
+        <div class="hero-overlay"></div>       
+        <img src="https://images.unsplash.com/photo-1547592180-85f173990554?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+             alt="Modern Indian cuisine" 
+             class="absolute inset-0 w-full h-full object-cover "
+            >
+        
+        <div class="relative z-20 text-center px-6 max-w-4xl mx-auto" data-aos="fade-up" data-aos-duration="1000">
+          
+            <h1 class="text-5xl md:text-7xl font-bold text-white mb-6 ">
+                <span class="text-primary">Modern</span> Indian Cuisine
+            </h1>
+            <p class="text-xl md:text-2xl text-white mb-8 max-w-2xl mx-auto animate__animated animate__fadeIn animate__delay-1s">
+                Where traditional flavors meet contemporary presentation
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4 animate__animated animate__fadeInUp animate__delay-1s">
+                <a href="menu.html" class="btn btn-primary">
+                    View Menu
+                </a>
+                <a href="#reservation" class="btn btn-white">
+                    Book a Table
+                </a>
+            </div>
+        </div>
+        
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-20 animate__animated animate__bounce animate__infinite animate__slow" data-aos="fade-up" data-aos-delay="1500">
+            <div class="scroll-indicator"></div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col lg:flex-row items-center gap-12">
+                <div class="lg:w-1/2 relative" data-aos="fade-right">
+                    <div class="relative overflow-hidden rounded-lg shadow-xl transform hover:scale-105 transition-transform duration-700">
+                        <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                             alt="Indian chef preparing food" 
+                             class="w-full h-auto transition-transform duration-700 hover:scale-110 rounded-lg"
+                             loading="lazy">
+                        <div class="absolute -bottom-6 -right-6 bg-transparent text-white p-6  w-40 h-40 flex flex-col items-center justify-center">
+                            <span class="text-3xl font-bold">25+</span>
+                            <span class="text-sm">Years Experience</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:w-1/2" data-aos="fade-left" data-aos-delay="200">
+                    <h2 class="text-4xl font-bold mb-6">
+                        Our Story
+                    </h2>
+                    <p class="text-lg mb-6">
+                        Founded in 1998 by Chef Rajiv Kapoor, YourRestaurant reimagines Indian cuisine for the modern palate. Our dishes honor traditional recipes while embracing contemporary techniques and presentation.
+                    </p>
+                    <p class="text-lg mb-8">
+                        Each plate tells a story - of youYour routes, royal kitchens, and home cooking passed through generations, now presented with artistic flair for today's discerning diners.
+                    </p>
+                    <a href="about.html" class="inline-flex items-center text-primary font-medium group transform hover:scale-105 transition-transform">
+                        View More
+                        <i class="fas fa-arrow-right ml-2 group-hover:ml-4 transition-all"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-4xl font-bold mb-4">
+                    Our Menu
+                </h2>
+                <p class="text-lg max-w-2xl mx-auto">
+                    A contemporary take on classic Indian dishes
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Starters -->
+                <div class="dish-card bg-white p-8 rounded-lg shadow-md" data-aos="fade-up" data-aos-delay="100">
+                    <div class="text-center mb-6">
+                        <div class="w-20 h-20 mx-auto mb-4 flex items-center justify-center transform hover:rotate-12 transition-transform">
+                            <i class="fas fa-utensils text-primary text-2xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-2">Starters</h3>
+                    </div>
+                    <ul class="space-y-6">
+                        <li class="border-b border-gray-100 pb-4 transform hover:translate-x-2 transition-transform">
+                            <div class="flex justify-between items-start">
+                                <h4 class="font-bold">Samosa Chaat</h4>
+                                <span class="font-bold ">₹180</span>
+                            </div>
+                            <p class="text-sm text-gray-600 mt-1">Deconstructed samosa with tamarind foam</p>
+                        </li>
+                        <li class="border-b border-gray-100 pb-4 transform hover:translate-x-2 transition-transform">
+                            <div class="flex justify-between items-start">
+                                <h4 class="font-bold">Paneer Tikka</h4>
+                                <span class="font-bold ">₹220</span>
+                            </div>
+                            <p class="text-sm text-gray-600 mt-1">Smoked cottage cheese, bell pepper gel</p>
+                        </li>
+                        <li class="border-b border-gray-100 pb-4 transform hover:translate-x-2 transition-transform">
+                            <div class="flex justify-between items-start">
+                                <h4 class="font-bold">Chicken 65</h4>
+                                <span class="font-bold ">₹240</span>
+                            </div>
+                            <p class="text-sm text-gray-600 mt-1">Crispy chicken, curry leaf powder</p>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Mains -->
+                <div class="dish-card bg-white p-8 rounded-lg shadow-md" data-aos="fade-up" data-aos-delay="200">
+                    <div class="text-center mb-6">
+                        <div class="w-20 h-20 mx-auto mb-4 rounded-full bg-primary/10 flex items-center justify-center transform hover:rotate-12 transition-transform">
+                            <i class="fas fa-drumstick-bite text-primary text-2xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-2">Main Courses</h3>
+                        <div class="w-20 h-1 bg-primary mx-auto"></div>
+                    </div>
+                    <ul class="space-y-6">
+                        <li class="border-b border-gray-100 pb-4 transform hover:translate-x-2 transition-transform">
+                            <div class="flex justify-between items-start">
+                                <h4 class="font-bold">Butter Chicken</h4>
+                                <span class="font-bold text-primary">₹320</span>
+                            </div>
+                            <p class="text-sm text-gray-600 mt-1">Tandoori chicken, tomato butter emulsion</p>
+                        </li>
+                        <li class="border-b border-gray-100 pb-4 transform hover:translate-x-2 transition-transform">
+                            <div class="flex justify-between items-start">
+                                <h4 class="font-bold">Lamb Rogan Josh</h4>
+                                <span class="font-bold text-primary">₹380</span>
+                            </div>
+                            <p class="text-sm text-gray-600 mt-1">Slow-cooked lamb, Kashmiri youYour air</p>
+                        </li>
+                        <li class="border-b border-gray-100 pb-4 transform hover:translate-x-2 transition-transform">
+                            <div class="flex justify-between items-start">
+                                <h4 class="font-bold">Dal Makhani</h4>
+                                <span class="font-bold text-primary">₹260</span>
+                            </div>
+                            <p class="text-sm text-gray-600 mt-1">48-hour black lentils, smoked ghee</p>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Breads & Rice --> 
+                <div class="dish-card bg-white p-8 rounded-lg shadow-md" data-aos="fade-up" data-aos-delay="300">
+                    <div class="text-center mb-6">
+                        <div class="w-20 h-20 mx-auto mb-4 rounded-full bg-primary/10 flex items-center justify-center transform hover:rotate-12 transition-transform">
+                            <i class="fas fa-bread-slice text-primary text-2xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-2">Breads & Rice</h3>
+                        <div class="w-20 h-1 bg-primary mx-auto"></div>
+                    </div>
+                    <ul class="space-y-6">
+                        <li class="border-b border-gray-100 pb-4 transform hover:translate-x-2 transition-transform">
+                            <div class="flex justify-between items-start">
+                                <h4 class="font-bold">Garlic Naan</h4>
+                                <span class="font-bold text-primary">₹80</span>
+                            </div>
+                            <p class="text-sm text-gray-600 mt-1">Tandoor-baked, black garlic butter</p>
+                        </li>
+                        <li class="border-b border-gray-100 pb-4 transform hover:translate-x-2 transition-transform">
+                            <div class="flex justify-between items-start">
+                                <h4 class="font-bold">Hyderabadi Biryani</h4>
+                                <span class="font-bold text-primary">₹350</span>
+                            </div>
+                            <p class="text-sm text-gray-600 mt-1">Basmati rice, sous vide meat, saffron foam</p>
+                        </li>
+                        <li class="border-b border-gray-100 pb-4 transform hover:translate-x-2 transition-transform">
+                            <div class="flex justify-between items-start">
+                                <h4 class="font-bold">Jeera Rice</h4>
+                                <span class="font-bold text-primary">₹150</span>
+                            </div>
+                            <p class="text-sm text-gray-600 mt-1">Basmati, toasted cumin, edible flowers</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="text-center mt-16" data-aos="fade-up">
+                <a href="menu.html" class="btn btn-primary">
+                    View Full Menu
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Signature Dishes -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-4xl font-bold mb-4">
+                    Chef's Signatures
+                </h2>
+                <p class="text-lg max-w-2xl mx-auto">
+                    Modern interpretations of classic dishes
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Dish 1 -->
+                <div class="dish-card bg-white rounded-lg shadow-md overflow-hidden" data-aos="zoom-in">
+                    <div class="relative overflow-hidden h-64 group">
+                        <img src="https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                             alt="Butter Chicken" 
+                             class="w-full h-full object-cover transition-transform duration-400 group-hover:scale-110"
+                             loading="lazy">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-6">
+                            <h3 class="text-2xl font-bold text-white">Butter Chicken</h3>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-600 mb-4">Tandoori chicken, tomato butter emulsion, micro cilantro</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-primary">₹320</span>
+                        </div>
+                    </div>
+                </div>
+                
+                
+                <!-- Dish 2 -->
+                <div class="dish-card bg-white rounded-lg shadow-md overflow-hidden" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="relative overflow-hidden h-64 group">
+                        <img src="https://images.unsplash.com/photo-1589302168068-964664d93dc0?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YmlyaXlhbml8ZW58MHx8MHx8fDA%3D" 
+                             alt="Biryani" 
+                             class="w-full h-full object-cover transition-transform duration-400 group-hover:scale-110"
+                             loading="lazy">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-6">
+                            <h3 class="text-2xl font-bold text-white">Hyderabadi Biryani</h3>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-600 mb-4">Basmati rice, sous vide meat, saffron foam</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-primary">₹350</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Dish 3 -->
+                <div class="dish-card bg-white rounded-lg shadow-md overflow-hidden" data-aos="zoom-in" data-aos-delay="400">
+                    <div class="relative overflow-hidden h-64 group">
+                        <img src="https://images.unsplash.com/photo-1668236543090-82eba5ee5976?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8TWFzYWxhJTIwZG9zYXxlbnwwfHwwfHx8MA%3D%3D" 
+                             alt="Dosa" 
+                             class="w-full h-full object-cover transition-transform duration-400 group-hover:scale-110"
+                             loading="lazy">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-6">
+                            <h3 class="text-2xl font-bold text-white">Masala Dosa</h3>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-600 mb-4">Rice crepe, youYourd potato foam, coconut chutney gel</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-primary">₹180</span>
+                          
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery -->
+    <section id="gallery" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-4xl font-bold mb-4">
+                    Our Gallery
+                </h2>
+                <p class="text-lg max-w-2xl mx-auto">
+                    Visual stories of our culinary creations
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-4 gap-4">
+                <div class="gallery-item" data-aos="flip-left">
+                    <img src="https://images.unsplash.com/photo-1542367592-8849eb950fd8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8aW5kaWFuJTIwZm9vZHxlbnwwfHwwfHx8MA%3D%3D" 
+                         alt="Restaurant interior" 
+                         class="w-full h-64 object-cover"
+                         loading="lazy">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus text-white text-3xl"></i>
+                    </div>
+                </div>
+                <div class="gallery-item" data-aos="flip-left" data-aos-delay="100">
+                    <img src="https://images.unsplash.com/photo-1596797038530-2c107229654b?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8aW5kaWFuJTIwZm9vZHxlbnwwfHwwfHx8MA%3D%3D" 
+                         alt="Chef preparing dish" 
+                         class="w-full h-64 object-cover"
+                         loading="lazy">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus text-white text-3xl"></i>
+                    </div>
+                </div>
+                <div class="gallery-item" data-aos="flip-left" data-aos-delay="200">
+                    <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGluZGlhbiUyMGZvb2R8ZW58MHx8MHx8fDA%3D" 
+                         alt="Plated dish" 
+                         class="w-full h-64 object-cover"
+                         loading="lazy">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus text-white text-3xl"></i>
+                    </div>
+                </div>
+                <div class="gallery-item" data-aos="flip-left" data-aos-delay="300">
+                    <img src="https://images.unsplash.com/photo-1505253758473-96b7015fcd40?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGluZGlhbiUyMGZvb2R8ZW58MHx8MHx8fDA%3D" 
+                         alt="Dessert" 
+                         class="w-full h-64 object-cover"
+                         loading="lazy">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus text-white text-3xl"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-16" data-aos="fade-up">
+                <a href="gallery.html" class="btn btn-primary">
+                    View Gallery
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-20 text-black">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-4xl font-bold mb-4">
+                    Guest Experience
+                </h2>
+                <p class="text-lg max-w-2xl mx-auto">
+                    What our diners say about us
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8 text-black ">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card  p-8 " data-aos="fade-up" data-aos-delay="100" >
+                    <div class="flex items-center mb-4 ">
+                        <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
+                            <img src="https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fGluZGlhbiUyMGdpcmx8ZW58MHx8MHx8fDA%3D" alt="Kavya Sharma" class="w-full h-full object-cover" loading="lazy">
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Kavya Sharma</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="italic">"The butter chicken here redefined my expectations. The modern presentation elevates the traditional flavors."</p>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card p-8  " data-aos="fade-up" data-aos-delay="200">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
+                            <img src="https://images.unsplash.com/photo-1581382575275-97901c2635b7?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8aW5kaWFuJTIwbWFufGVufDB8fDB8fHww" alt="Yash Kumar" class="w-full h-full object-cover" loading="lazy">
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Yash Kumar</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="italic">"The biryani is perfection - traditional flavors with contemporary techniques that surprise and delight."</p>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card p-8  " data-aos="fade-up" data-aos-delay="300">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
+                            <img src="https://plus.unsplash.com/premium_photo-1682089810582-f7b200217b67?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8aW5kaWFuJTIwZ2lybHxlbnwwfHwwfHx8MA%3D%3D" alt="Priya Patel" class="w-full h-full object-cover" loading="lazy">
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Priya Patel</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="italic">"As an Indian food connoisseur, I'm amazed by how YourRestaurant balances innovation with authenticity."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+ <!-- Reservation -->
+<section id="reservation" class="py-20 bg-secondary text-black">
+    <div class="container mx-auto px-6 max-w-4xl">
+        <div class="text-center mb-12" data-aos="fade-up">
+            <h2 class="text-4xl font-bold mb-4">
+                Reserve Your Table
+            </h2>
+            <p class="text-lg">
+                Book your dining experience online or call us at +91 98989995XX
+            </p>
+        </div>
+
+        <form class="grid md:grid-cols-2 gap-6" data-aos="fade-up" data-aos-delay="200">
+            <div>
+                <label for="name" class="block mb-2 font-medium">Full Name</label>
+                <input type="text" id="name" class="w-full px-4 py-3 rounded-lg form-input " required>
+            </div>
+            <div>
+                <label for="email" class="block mb-2 font-medium">Email</label>
+                <input type="email" id="email" class="w-full px-4 py-3 rounded-lg form-input " required>
+            </div>
+            <div>
+                <label for="phone" class="block mb-2 font-medium">Phone Number</label>
+                <input type="tel" id="phone" class="w-full px-4 py-3 rounded-lg form-input " required>
+            </div>
+            <div>
+                <label for="date" class="block mb-2 font-medium">Date</label>
+                <input type="date" id="date" class="w-full px-4 py-3 rounded-lg form-input " required>
+            </div>
+            <div>
+                <label for="time" class="block mb-2 font-medium">Time</label>
+                <select id="time" class="w-full px-4 py-3 rounded-lg form-input" required>
+                    <option value="">Select time</option>
+                    <option>6:00 PM</option>
+                    <option>6:30 PM</option>
+                    <option>7:00 PM</option>
+                    <option>7:30 PM</option>
+                    <option>8:00 PM</option>
+                    <option>8:30 PM</option>
+                    <option>9:00 PM</option>
+                </select>
+            </div>
+            <div>
+                <label for="guests" class="block mb-2 font-medium">Number of Guests</label>
+                <select id="guests" class="w-full px-4 py-3 rounded-lg form-input focus:border-primary" required>
+                    <option value="">Select guests</option>
+                    <option>1 person</option>
+                    <option>2 people</option>
+                    <option>3 people</option>
+                    <option>4 people</option>
+                    <option>5 people</option>
+                    <option>6+ people</option>
+                </select>
+            </div>
+            <div class="md:col-span-2">
+                <label for="special" class="block mb-2 font-medium ">Special Requests</label>
+                <textarea id="special" rows="3" class="w-full px-4 py-3 rounded-lg form-input focus:border-primary"></textarea>
+            </div>
+            <div class="md:col-span-2 text-center">
+                <button type="submit" class="btn btn-primary">
+                    Book Now
+                </button>
+            </div>
+        </form>
+    </div>
+</section>
+
+
+    <!-- Contact -->
+    <section id="contact" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-12">
+                <div data-aos="fade-right">
+                    <h2 class="text-4xl font-bold mb-6">
+                        Contact Us
+                    </h2>
+                    <p class="text-lg mb-8">
+                        We'd love to hear from you. Whether you have a question about reservations, private dining, or anything else, our team is ready to answer all your questions.
+                    </p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start transform hover:scale-105 transition-transform">
+                            <div class=" mr-4">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg">Location</h4>
+                                <p>123 Your Street<br>Kawardha, Chhattishgar 491995</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start transform hover:scale-105 transition-transform">
+                            <div class=" mr-4">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg">Phone</h4>
+                                <p>+91 98765 4321X</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start transform hover:scale-105 transition-transform">
+                            <div class=" mr-4">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg">Email</h4>
+                                <p>contact@YourRestaurant.com</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div data-aos="fade-left" data-aos-delay="200">
+                    <h3 class="text-3xl font-bold mb-6">
+                        Opening Hours
+                    </h3>
+                    <div class="bg-gray-50 p-8 rounded-lg shadow-md">
+                        <ul class="space-y-4">
+                            <li class="flex justify-between border-b border-gray-200 pb-4 transform hover:translate-x-2 transition-transform">
+                                <span class="font-medium">Monday - Thursday</span>
+                                <span>11:00 AM - 10:30 PM</span>
+                            </li>
+                            <li class="flex justify-between border-b border-gray-200 pb-4 transform hover:translate-x-2 transition-transform">
+                                <span class="font-medium">Friday - Saturday</span>
+                                <span>11:00 AM - 11:30 PM</span>
+                            </li>
+                            <li class="flex justify-between transform hover:translate-x-2 transition-transform">
+                                <span class="font-medium">Sunday</span>
+                                <span>11:00 AM - 10:00 PM</span>
+                            </li>
+                        </ul>
+                        
+                        <div class="mt-8">
+                            <h4 class="font-bold text-lg mb-4">Private Dining & Events</h4>
+                            <p class="mb-4">
+                                Our private dining room accommodates up to 30 guests for weddings, corporate events, and family gatherings.
+                            </p>
+                            <a href="contact.html" class="inline-flex items-center font-medium group transform hover:scale-105 transition-transform">
+                                Inquire About Private Events
+                                <i class="fas fa-arrow-right ml-2 group-hover:ml-4 transition-all"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+  
+  <!-- Footer -->
+  <footer class="bg-dark text-white py-12" data-aos="fade-up" data-aos-delay="100" ">
+    <div class="container mx-auto px-6">
+        <div class="grid md:grid-cols-4 gap-8">
+            <!-- Column 1: Logo and Social -->
+            <div data-aos="fade-up" data-aos-delay="100">
+                <a href="#" class="footer-logo">
+                    <span >YourRestaurant
+                </a>
+                <p class="mb-6 text-gray-300">
+                    Modern Indian cuisine blending traditional flavors with contemporary presentation.
+                </p>
+                <div class="footer-social ">
+                    <a href="#" aria-label="Facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" aria-label="Instagram" >
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" aria-label="Twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Column 2: Quick Links -->
+            <div data-aos="fade-up" data-aos-delay="100">
+                <h4 class="text-lg font-bold mb-4 text-white">Quick Links</h4>
+                <ul class="space-y-2">
+                    <li><a href="index.html" class="text-gray-300 hover:text-red-500 transition-colors">Home</a></li>
+                    <li><a href="about.html" class="text-gray-300 hover:text-red-500 transition-colors">About Us</a></li>
+                    <li><a href="menu.html" class="text-gray-300 hover:text-red-500 transition-colors">Menu</a></li>
+                    <li><a href="gallery.html" class="text-gray-300 hover:text-red-500 transition-colors">Gallery</a></li>
+                    <li><a href="contact.html" class="text-gray-300 hover:text-red-500 transition-colors">Contact</a></li>
+                </ul>
+            </div>
+
+            <!-- Column 3: Legal -->
+            <div data-aos="fade-up" data-aos-delay="200">
+                <h4 class="text-lg font-bold mb-4 text-white">Legal</h4>
+                <ul class="space-y-2">
+                    <li><a href="legal.html" class="text-gray-300 hover:text-red-500 transition-colors">Privacy Policy</a></li>
+                    <li><a href="legal.html" class="text-gray-300 hover:text-red-500 transition-colors">Terms of Service</a></li>
+                    <li><a href="legal.html" class="text-gray-300 hover:text-red-500 transition-colors">Cookie Policy</a></li>
+                </ul>
+            </div>
+
+            <!-- Column 4: Newsletter -->
+            <div data-aos="fade-up" data-aos-delay="300">
+                <h4 class="text-lg font-bold mb-4 text-white">Newsletter</h4>
+                <p class="mb-4 text-gray-300">
+                    Subscribe to our newsletter for seasonal menus, special events, and exclusive offers.
+                </p>
+                <form class="flex">
+                    <input 
+                        type="email" 
+                        placeholder="Your email" 
+                        class="px-4 py-2 bg-gray-800 text-white border border-gray-700 rounded-l-lg w-full focus:outline-none focus:ring-2 focus:ring-red-400" 
+                        required
+                    >
+                    <button 
+                        type="submit" 
+                        class="bg-red-500 text-white px-4 py-2 rounded-r-lg hover:bg-red-600 transition-colors focus:outline-none focus:ring-2 focus:ring-red-300" 
+                        aria-label="Subscribe"
+                    >
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+        <div class="border-t border-gray-800 mt-20 pt-8 text-center text-white" >
+            <p>&copy; 2025 YourRestaurant. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+        <!-- back to top  -->
+        <a href="#" class="back-to-top fixed bottom-8 right-8 text-white p-4 rounded-full shadow-lg  transition-colors z-50" id="backToTop" aria-label="Back to top">
+            <i class="fas fa-arrow-up"></i>
+        </a>
+   
+
+
+    <!-- AOS (Animate On Scroll) -->    
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="loader.js"></script>
+    <script src="javaScript/common.js"></script>
+    <script>
+            // Form submission
+    const reservationForm = document.querySelector('#reservation form');
+    if (reservationForm) {
+        reservationForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your reservation! We will contact you shortly to confirm.');
+            this.reset();
+        });
+    }
+    </script>
+    
+    
+    
+    
+</body>
+</html>

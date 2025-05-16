@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YourRestaurant | Gallery</title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/gallery.css">
+    <link rel="stylesheet" href="./output.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Prata&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-white shadow-sm z-50 transition-all duration-500" id="navbar">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-3xl font-bold transform hover:scale-105 transition-transform">
+                <span >YourRestaurant</span>
+            </a>
+            
+            <div class="hidden md:flex space-x-8 items-center">
+                <a href="index.html" class="nav-link underline-animation">Home</a>
+                <a href="about.html" class="nav-link underline-animation">About</a>
+                <a href="menu.html" class="nav-link underline-animation">Menu</a>
+                <a href="gallery.html" class="nav-link underline-animation">Gallery</a>
+                <a href="contact.html" class="nav-link underline-animation">Contact</a>
+                <a href="reservation.html" class="btn btn-primary ml-4 animate__animated animate__pulse animate__infinite animate__slower">Reservations</a>
+            </div>
+            
+            <button class="md:hidden focus:outline-none" id="hamburger-btn">
+                <div class="hamburger">
+                    <span class="hamburger-line block w-6 h-0.5 bg-secondary mb-1.5"></span>
+                    <span class="hamburger-line block w-6 h-0.5 bg-secondary mb-1.5"></span>
+                    <span class="hamburger-line block w-6 h-0.5 bg-secondary"></span>
+                </div>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu fixed inset-0 bg-white z-40 pt-20 px-6 md:hidden" id="mobile-menu">
+        <div class="flex flex-col space-y-6 text-xl">
+            <a href="index.html" class="nav-link py-2 underline-animation">Home</a>
+            <a href="about.html" class="nav-link py-2 underline-animation">About</a>
+            <a href="menu.html" class="nav-link py-2 underline-animation">Menu</a>
+            <a href="gallery.html" class="nav-link py-2 underline-animation">Gallery</a>
+            <a href="contact.html" class="nav-link py-2 underline-animation">Contact</a>
+            <a href="reservation.html" class="btn btn-primary px-6 py-3 rounded-full w-full text-center mt-4">Reservations</a>
+        </div>
+    </div>
+
+    <!-- Gallery Hero Section -->
+    <section class="menu-hero">
+        <div class="gallery-hero-overlay"></div>
+        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+             alt="Restaurant interior" 
+             class="w-full h-full object-cover"
+             loading="lazy">
+        
+        <div class="menu-hero-content">
+            <h1 class="text-4xl md:text-6xl font-bold mb-4">Our <span class="text-red-400">Gallery</span></h1>
+            <p class="text-xl mb-8 max-w-2xl mx-auto">A visual journey through our culinary creations and ambiance</p>
+        </div>
+    </section>
+
+    <!-- Gallery Filter Buttons -->
+    <div class="filter-buttons">
+        <button class="category-btn active" data-filter="all">All</button>
+        <button class="category-btn" data-filter="food">Food</button>
+        <button class="category-btn" data-filter="interior">Interior</button>
+        <button class="category-btn" data-filter="events">Events</button>
+        <button class="category-btn" data-filter="chefs">Chefs</button>
+    </div>
+
+    <!-- Gallery Grid -->
+    <div class="container mx-auto px-6">
+        <div id="gallery-container">
+            
+            
+            <!-- Gallery items will be loaded here dynamically -->
+            <div class="gallery-grid" id="gallery-grid"></div>
+        </div>
+    </div>
+
+   <!-- HTML (add this to your existing code) -->
+<div class="lightbox" id="lightbox">
+    <button class="lightbox-close" id="lightbox-close">&times;</button>
+    <button class="lightbox-prev" id="lightbox-prev"><i class="fas fa-chevron-left"></i></button>
+    <button class="lightbox-next" id="lightbox-next"><i class="fas fa-chevron-right"></i></button>
+    
+    <div class="lightbox-content">
+        <img src="" alt="" class="lightbox-img" id="lightbox-img">
+        <div class="lightbox-caption" id="lightbox-caption"></div>
+    </div>
+</div>
+   <!-- Footer -->
+   <footer class="bg-dark text-white py-12">
+    <div class="container mx-auto px-6">
+        <div class="grid md:grid-cols-4 gap-8">
+            <!-- Column 1: Logo and Social -->
+            <div data-aos="fade-up" data-aos-delay="100">
+                <a href="#" class="footer-logo">
+                    <span class="text-white">Your<span class="text-red-500">Restaurant</span></span>
+                </a>
+                <p class="mb-6 text-gray-300">
+                    Modern Indian cuisine blending traditional flavors with contemporary presentation.
+                </p>
+                <div class="footer-social space-x-4">
+                    <a href="#" aria-label="Facebook" class="text-gray-300 hover:text-white transition-colors">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" aria-label="Instagram" class="text-gray-300 hover:text-white transition-colors">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" aria-label="Twitter" class="text-gray-300 hover:text-white transition-colors">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Column 2: Quick Links -->
+            <div data-aos="fade-up" data-aos-delay="100">
+                <h4 class="text-lg font-bold mb-4 text-white">Quick Links</h4>
+                <ul class="space-y-2">
+                    <li><a href="index.html" class="text-gray-300 hover:text-red-500 transition-colors">Home</a></li>
+                    <li><a href="about.html" class="text-gray-300 hover:text-red-500 transition-colors">About Us</a></li>
+                    <li><a href="menu.html" class="text-gray-300 hover:text-red-500 transition-colors">Menu</a></li>
+                    <li><a href="gallery.html" class="text-gray-300 hover:text-red-500 transition-colors">Gallery</a></li>
+                    <li><a href="contact.html" class="text-gray-300 hover:text-red-500 transition-colors">Contact</a></li>
+                </ul>
+            </div>
+       <!-- Column 3: Legal -->
+            <div data-aos="fade-up" data-aos-delay="200">
+                <h4 class="text-lg font-bold mb-4 text-white">Legal</h4>
+                <ul class="space-y-2">
+                    <li><a href="legal.html" class="text-gray-300 hover:text-red-500 transition-colors">Privacy Policy</a></li>
+                    <li><a href="legal.html" class="text-gray-300 hover:text-red-500 transition-colors">Terms of Service</a></li>
+                    <li><a href="legal.html" class="text-gray-300 hover:text-red-500 transition-colors">Cookie Policy</a></li>
+                </ul>
+            </div>
+
+            <!-- Column 4: Newsletter -->
+            <div data-aos="fade-up" data-aos-delay="300">
+                <h4 class="text-lg font-bold mb-4 text-white">Newsletter</h4>
+                <p class="mb-4 text-gray-300">
+                    Subscribe to our newsletter for seasonal menus, special events, and exclusive offers.
+                </p>
+                <form class="flex">
+                    <input 
+                        type="email" 
+                        placeholder="Your email" 
+                        class="px-4 py-2 bg-gray-800 text-white border border-gray-700 rounded-l-lg w-full focus:outline-none focus:ring-2 focus:ring-red-400" 
+                        required
+                    >
+                    <button 
+                        type="submit" 
+                        class="bg-red-500 text-white px-4 py-2 rounded-r-lg hover:bg-red-600 transition-colors focus:outline-none focus:ring-2 focus:ring-red-300" 
+                        aria-label="Subscribe"
+                    >
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+        <div class="border-t border-gray-800 mt-20 pt-8 text-center text-white" >
+            <p>&copy; 2025 YourRestaurant. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+    <!-- back to top  -->
+    <a href="#" class="back-to-top fixed bottom-8 right-8 text-white p-4 rounded-full shadow-lg  transition-colors z-50" id="backToTop" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="javaScript/common.js"></script>
+    <script src="javaScript/gallery.js"></script>
+    
+</body>
+</html>
